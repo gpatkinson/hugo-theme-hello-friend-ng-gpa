@@ -93,21 +93,113 @@
   width: 100%;
   border-collapse: collapse;
   font-size: 0.95rem;
+  table-layout: fixed !important;
 }
 
 .datatable-container th,
 .datatable-container td {
-  border: 1px solid #ddd;
-  padding: 0.6em;
+  // Default (light mode)
+  border: 1px solid $light-table-color;
+  padding: 8px 6px;
   text-align: left;
+  font-size: 0.9em;
+  vertical-align: top;
+
+  @media (prefers-color-scheme: dark) {
+    border: 1px solid $dark-table-color;
+  }
+
+  @media (prefers-color-scheme: light) {
+    border: 1px solid $light-table-color;
+  }
+
+  [data-theme=dark] & {
+    border: 1px solid $dark-table-color;
+  }
+
+  [data-theme=light] & {
+    border: 1px solid $light-table-color;
+  }
+}
+
+.datatable-container td {
+  word-wrap: break-word !important;
+  overflow-wrap: break-word !important;
+  white-space: normal !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis;
+}
+
+// Rating column specific styling
+.datatable-container td:nth-child(5) {
+  text-align: center;
+}
+
+// Date column specific styling
+.datatable-container td:nth-child(1) {
+  font-family: monospace;
+  font-size: 0.85em;
 }
 
 .datatable-container th {
-  background-color: #f4f4f4;
   font-weight: bold;
+  // Default (light mode) - muted header
+  background-color: #e8e8e8;
+  color: $light-color;
+
+  @media (prefers-color-scheme: dark) {
+    background-color: #3a3b3f;
+    color: $dark-color;
+  }
+
+  @media (prefers-color-scheme: light) {
+    background-color: #e8e8e8;
+    color: $light-color;
+  }
+
+  [data-theme=dark] & {
+    background-color: #3a3b3f;
+    color: $dark-color;
+  }
+
+  [data-theme=light] & {
+    background-color: #e8e8e8;
+    color: $light-color;
+  }
 }
 
-// DataTables specific styling
+// High specificity DataTables header styling to override defaults
+table.datatable.display thead th,
+table.display thead th,
+.datatable-container table.display thead th,
+.datatable-container table thead th {
+  font-weight: bold !important;
+  // Default (light mode) - muted header
+  background-color: #e8e8e8 !important;
+  color: $light-color !important;
+
+  @media (prefers-color-scheme: dark) {
+    background-color: #3a3b3f !important;
+    color: $dark-color !important;
+  }
+
+  @media (prefers-color-scheme: light) {
+    background-color: #e8e8e8 !important;
+    color: $light-color !important;
+  }
+
+  [data-theme=dark] & {
+    background-color: #3a3b3f !important;
+    color: $dark-color !important;
+  }
+
+  [data-theme=light] & {
+    background-color: #e8e8e8 !important;
+    color: $light-color !important;
+  }
+}
+
+// DataTables specific styling with dark mode support
 .dataTables_wrapper {
   margin: 1rem 0;
 }
@@ -118,16 +210,76 @@
 
 .dataTables_filter input {
   padding: 0.5rem;
-  border: 1px solid #ddd;
   border-radius: 4px;
   margin-left: 0.5rem;
+  width: 300px;
+  // Default (light mode)
+  border: 1px solid $light-border-color;
+  background: $light-background;
+  color: $light-color;
+
+  @media (prefers-color-scheme: dark) {
+    border: 1px solid $dark-border-color;
+    background: $dark-background-secondary;
+    color: $dark-color;
+  }
+
+  @media (prefers-color-scheme: light) {
+    border: 1px solid $light-border-color;
+    background: $light-background;
+    color: $light-color;
+  }
+
+  [data-theme=dark] & {
+    border: 1px solid $dark-border-color;
+    background: $dark-background-secondary;
+    color: $dark-color;
+  }
+
+  [data-theme=light] & {
+    border: 1px solid $light-border-color;
+    background: $light-background;
+    color: $light-color;
+  }
+}
+
+.dataTables_length,
+.dataTables_filter {
+  margin-bottom: 1rem;
 }
 
 .dataTables_length select {
   padding: 0.3rem;
-  border: 1px solid #ddd;
   border-radius: 4px;
   margin: 0 0.5rem;
+  // Default (light mode)
+  border: 1px solid $light-border-color;
+  background: $light-background;
+  color: $light-color;
+
+  @media (prefers-color-scheme: dark) {
+    border: 1px solid $dark-border-color;
+    background: $dark-background-secondary;
+    color: $dark-color;
+  }
+
+  @media (prefers-color-scheme: light) {
+    border: 1px solid $light-border-color;
+    background: $light-background;
+    color: $light-color;
+  }
+
+  [data-theme=dark] & {
+    border: 1px solid $dark-border-color;
+    background: $dark-background-secondary;
+    color: $dark-color;
+  }
+
+  [data-theme=light] & {
+    border: 1px solid $light-border-color;
+    background: $light-background;
+    color: $light-color;
+  }
 }
 
 .dataTables_paginate {
@@ -137,14 +289,57 @@
 .dataTables_paginate .paginate_button {
   padding: 0.5rem 0.75rem;
   margin: 0 0.2rem;
-  border: 1px solid #ddd;
   border-radius: 4px;
   cursor: pointer;
-  background: #fff;
+  // Default (light mode)
+  border: 1px solid $light-border-color;
+  background: $light-background;
+  color: $light-color;
+
+  @media (prefers-color-scheme: dark) {
+    border: 1px solid $dark-border-color;
+    background: $dark-background-secondary;
+    color: $dark-color;
+  }
+
+  @media (prefers-color-scheme: light) {
+    border: 1px solid $light-border-color;
+    background: $light-background;
+    color: $light-color;
+  }
+
+  [data-theme=dark] & {
+    border: 1px solid $dark-border-color;
+    background: $dark-background-secondary;
+    color: $dark-color;
+  }
+
+  [data-theme=light] & {
+    border: 1px solid $light-border-color;
+    background: $light-background;
+    color: $light-color;
+  }
 }
 
 .dataTables_paginate .paginate_button:hover {
-  background: #f4f4f4;
+  // Default (light mode)
+  background: $light-background-secondary;
+
+  @media (prefers-color-scheme: dark) {
+    background: $dark-background;
+  }
+
+  @media (prefers-color-scheme: light) {
+    background: $light-background-secondary;
+  }
+
+  [data-theme=dark] & {
+    background: $dark-background;
+  }
+
+  [data-theme=light] & {
+    background: $light-background-secondary;
+  }
 }
 
 .dataTables_paginate .paginate_button.current {
@@ -156,5 +351,22 @@
 .dataTables_info {
   margin-top: 1rem;
   font-size: 0.9rem;
-  color: #666;
+  // Default (light mode)
+  color: $light-color-secondary;
+
+  @media (prefers-color-scheme: dark) {
+    color: $dark-color-secondary;
+  }
+
+  @media (prefers-color-scheme: light) {
+    color: $light-color-secondary;
+  }
+
+  [data-theme=dark] & {
+    color: $dark-color-secondary;
+  }
+
+  [data-theme=light] & {
+    color: $light-color-secondary;
+  }
 }
