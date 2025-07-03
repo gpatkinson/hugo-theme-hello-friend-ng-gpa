@@ -82,3 +82,79 @@
     }
   }
 }
+
+// DataTables Custom Styling
+.datatable-container {
+  margin: 2rem 0;
+  overflow-x: auto;
+}
+
+.datatable-container table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+}
+
+.datatable-container th,
+.datatable-container td {
+  border: 1px solid #ddd;
+  padding: 0.6em;
+  text-align: left;
+}
+
+.datatable-container th {
+  background-color: #f4f4f4;
+  font-weight: bold;
+}
+
+// DataTables specific styling
+.dataTables_wrapper {
+  margin: 1rem 0;
+}
+
+.dataTables_filter {
+  margin-bottom: 1rem;
+}
+
+.dataTables_filter input {
+  padding: 0.5rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  margin-left: 0.5rem;
+}
+
+.dataTables_length select {
+  padding: 0.3rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  margin: 0 0.5rem;
+}
+
+.dataTables_paginate {
+  margin-top: 1rem;
+}
+
+.dataTables_paginate .paginate_button {
+  padding: 0.5rem 0.75rem;
+  margin: 0 0.2rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  cursor: pointer;
+  background: #fff;
+}
+
+.dataTables_paginate .paginate_button:hover {
+  background: #f4f4f4;
+}
+
+.dataTables_paginate .paginate_button.current {
+  background: #007cba;
+  color: white;
+  border-color: #007cba;
+}
+
+.dataTables_info {
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  color: #666;
+}
